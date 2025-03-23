@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+/* Custom Dark Mode Classes */
+.dark {
+  --tw-bg-opacity: 1;
+  --dark-bg-primary: 15, 23, 42;
+  --dark-bg-secondary: 30, 41, 59;
+  --dark-text-primary: 226, 232, 240;
+  --dark-text-secondary: 148, 163, 184;
+
+  color-scheme: dark;
+}
+
+/* Dark mode styles */
+.dark .dark\:bg-dark-800 {
+  background-color: rgb(var(--dark-bg-primary));
+}
+
+.dark .dark\:bg-dark-700 {
+  background-color: rgb(var(--dark-bg-secondary));
+}
+
+.dark .dark\:text-white,
+.dark .dark\:text-gray-100 {
+  color: rgb(var(--dark-text-primary));
+}
+
+.dark .dark\:text-gray-300,
+.dark .dark\:text-gray-200 {
+  color: rgb(var(--dark-text-secondary));
+}
+
+.dark .dark\:from-dark-900 {
+  --tw-gradient-from: rgb(15, 23, 42) var(--tw-gradient-from-position);
+}
+
+.dark .dark\:to-dark-800 {
+  --tw-gradient-to: rgb(30, 41, 59) var(--tw-gradient-to-position);
+}
+
+.dark .dark\:bg-dark-900 {
+  background-color: rgb(15, 23, 42);
+}
+
+.dark .dark\:border-dark-700 {
+  border-color: rgb(var(--dark-bg-secondary));
+}
+
+/* Script to handle immediate mode switching before React loads */
+:root {
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    color-scheme: dark;
+  }
+}
